@@ -1,4 +1,4 @@
-import { API_URL, WS_URL, WEB_URL } from './config';
+import { API_URL, WS_URL, WEB_URL, isRemoteApi } from './config';
 
 export function formatApiError(raw: string, status?: number): string {
   const trimmed = raw.trim();
@@ -33,5 +33,8 @@ export class ApiError extends Error {
 }
 
 export function apiSetupHint(): string {
+  if (isRemoteApi) {
+    return `API ${API_URL} · WebSocket ${WS_URL}`;
+  }
   return `API ${API_URL} → :3001 · WebSocket ${WS_URL}`;
 }

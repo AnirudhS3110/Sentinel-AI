@@ -12,8 +12,10 @@ import { RedisModule } from './redis/redis.module';
 import { IncidentsModule } from './incidents/incidents.module';
 import { WorkflowsModule } from './workflows/workflows.module';
 import { ReportsModule } from './reports/reports.module';
+import { AppController } from './app.controller';
 
 @Module({
+  controllers: [AppController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [appConfig] }),
     BullModule.forRootAsync({

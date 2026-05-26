@@ -10,6 +10,10 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000
 /** Socket.IO lives on the Nest server (not proxied through Next) */
 export const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'http://localhost:3001';
 
+/** True when the web app targets a remote API (e.g. Vercel → Railway). */
+export const isRemoteApi =
+  !API_URL.includes('localhost') && !API_URL.includes('127.0.0.1');
+
 /** Firebase web API keys are ~39 chars and start with AIza */
 export function isValidFirebaseApiKey(key: string): boolean {
   return /^AIza[0-9A-Za-z_-]{30,}$/.test(key.trim());
