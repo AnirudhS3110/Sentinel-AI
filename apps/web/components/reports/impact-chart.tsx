@@ -1,5 +1,5 @@
 'use client';
-import type {TooltipProps,ValueType,NameType} from 'recharts/types/component/DefaultTooltipContent';
+
 
 import {
   AreaChart,
