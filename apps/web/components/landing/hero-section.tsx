@@ -75,17 +75,18 @@ export function HeroSection() {
             >
               <Link
                 href="/dashboard"
-                className="group flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-3.5 text-xs font-semibold text-white shadow-[0_0_28px_rgba(124,58,237,0.4)] transition-all hover:scale-[1.02] hover:opacity-95"
+                className="group   flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-3.5 text-xs font-semibold text-white shadow-[0_0_28px_rgba(124,58,237,0.4)] transition-all hover:scale-[1.02] hover:opacity-95"
               >
                 Start orchestrating
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <button
                 type="button"
-                className="flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-[#0c0c14] hover:bg-[#11111d] px-6 py-3.5 text-xs font-semibold text-white transition-all hover:border-white/15"
+                className="flex cursor-pointer items-center gap-1.5 rounded-full border border-white/[0.08] bg-[#0c0c14] hover:bg-[#11111d] px-6 py-3.5 text-xs font-semibold text-white transition-all hover:border-white/15"
+                onClick={() => window.open("https://github.com/AnirudhS3110/Sentinel-AI.git", "_blank")}
               >
-                <Calendar className="h-3.5 w-3.5 text-zinc-400" />
-                Book a demo
+                Repository
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </button>
             </motion.div>
 
