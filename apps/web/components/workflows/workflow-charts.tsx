@@ -10,12 +10,12 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  type TooltipProps,
+  type TooltipContentProps,
 } from 'recharts';
 import type { WorkflowRun } from '@/lib/workflows-data';
 import { chartDurationTrend } from '@/lib/workflows-data';
 
-const GlassTooltip = ({ active, payload, label }: TooltipProps<number, string>) => {
+const GlassTooltip = ({ active, payload, label }: TooltipContentProps) => {
   if (!active || !payload?.length) return null;
   return (
     <div
@@ -68,7 +68,7 @@ export function WorkflowCharts({ runs }: { runs: WorkflowRun[] }) {
             <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
             <XAxis dataKey="label" tick={{ fill: '#475569', fontSize: 9 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: '#475569', fontSize: 9 }} axisLine={false} tickLine={false} />
-            <Tooltip content={<GlassTooltip />} />
+            <Tooltip content={GlassTooltip} />
             <Area
               type="monotone"
               dataKey="ms"
@@ -96,7 +96,7 @@ export function WorkflowCharts({ runs }: { runs: WorkflowRun[] }) {
             <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
             <XAxis dataKey="label" tick={{ fill: '#475569', fontSize: 9 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: '#475569', fontSize: 9 }} axisLine={false} tickLine={false} />
-            <Tooltip content={<GlassTooltip />} />
+            <Tooltip content={GlassTooltip} />
             <Area
               type="monotone"
               dataKey="rate"
@@ -124,7 +124,7 @@ export function WorkflowCharts({ runs }: { runs: WorkflowRun[] }) {
             <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
             <XAxis dataKey="label" tick={{ fill: '#475569', fontSize: 9 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: '#475569', fontSize: 9 }} axisLine={false} tickLine={false} />
-            <Tooltip content={<GlassTooltip />} />
+            <Tooltip content={GlassTooltip} />
             <Area
               type="monotone"
               dataKey="count"
