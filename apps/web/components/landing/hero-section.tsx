@@ -1,16 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Sparkles, Activity, ShieldCheck, Cpu } from 'lucide-react';
 import { HeroDashboardPreview } from './hero-dashboard-preview';
 
-const stagger = {
+const stagger:Variants = {
   hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut', delay: i * 0.08 },
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.08 },
   }),
 };
 
