@@ -10,7 +10,6 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  type TooltipProps,
 } from 'recharts';
 
 const GlassTooltip = ({ active, payload, label }: any) => {
@@ -28,7 +27,7 @@ const GlassTooltip = ({ active, payload, label }: any) => {
       }}
     >
       <p style={{ color: '#64748b', marginBottom: 6, fontSize: 10, fontWeight: 600 }}>{label}</p>
-      {payload.map((entry) => (
+      {payload.map((entry:any) => (
         <div key={entry.name} className="flex items-center gap-2" style={{ marginBottom: 2 }}>
           <span
             style={{
