@@ -1,0 +1,63 @@
+/* SentinelAI command center design tokens */
+.platform-shell {
+  --sentinel-bg: #050816;
+  --sentinel-surface: #0b1020;
+  --sentinel-elevated: #111827;
+  --sentinel-hover: #161f33;
+  --sentinel-text: #f8fafc;
+  --sentinel-text-secondary: #94a3b8;
+  --sentinel-text-muted: #64748b;
+  --sentinel-border: rgba(255, 255, 255, 0.06);
+  --sentinel-purple: #7c3aed;
+  --sentinel-purple-bright: #8b5cf6;
+  --sentinel-violet-glow: #a78bfa;
+  --sentinel-cyan: #06b6d4;
+  --sentinel-teal: #14b8a6;
+  --sentinel-emerald: #10b981;
+  --sentinel-gradient: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 40%, #06b6d4 100%);
+  --sentinel-card-glow: linear-gradient(180deg, rgba(124, 58, 237, 0.08), rgba(6, 182, 212, 0.03));
+  --sentinel-glow-radial: radial-gradient(circle at center, rgba(124, 58, 237, 0.35), transparent 70%);
+}
+
+.sentinel-gradient-text {
+  background: var(--sentinel-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sentinel-beam {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(20, 184, 166, 0.9) 20%,
+    rgba(139, 92, 246, 1) 50%,
+    rgba(6, 182, 212, 0.8) 80%,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: sentinel-beam-flow 3s ease-in-out infinite;
+}
+
+@keyframes sentinel-beam-flow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes sentinel-pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px -4px rgba(139, 92, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 32px -2px rgba(139, 92, 246, 0.65);
+  }
+}
+
+.sentinel-pulse-node {
+  animation: sentinel-pulse-glow 2.2s ease-in-out infinite;
+}

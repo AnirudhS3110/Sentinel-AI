@@ -1,0 +1,96 @@
+.landing-root {
+  --landing-bg: #050816;
+  --landing-surface: #0b1020;
+  --landing-elevated: #111827;
+  --landing-hover: #161f33;
+  --landing-text: #f8fafc;
+  --landing-muted: #64748b;
+  --landing-secondary: #94a3b8;
+  --landing-gradient: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 45%, #06b6d4 100%);
+  --landing-card-gradient: linear-gradient(180deg, rgba(124, 58, 237, 0.08), rgba(6, 182, 212, 0.03));
+  --landing-glass: rgba(17, 24, 39, 0.6);
+  background-color: var(--landing-bg);
+  color: var(--landing-text);
+}
+
+.landing-gradient-text {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.landing-hero-glow {
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.35), transparent 70%);
+}
+
+.landing-glass {
+  background: var(--landing-glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.12);
+}
+
+.landing-cta-gradient {
+  background: var(--landing-gradient);
+}
+
+.landing-pipeline-beam {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #14f1d9 15%,
+    #a855f7 50%,
+    #14f1d9 85%,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: landing-beam-flow 3s ease-in-out infinite;
+}
+
+@keyframes landing-beam-flow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes landing-live-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.5;
+  }
+}
+
+.landing-live-dot {
+  animation: landing-live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

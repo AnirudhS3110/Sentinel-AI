@@ -1,0 +1,37 @@
+export declare enum UserRole {
+    USER = "USER",
+    ADMIN = "ADMIN"
+}
+export declare enum IncidentStatus {
+    INCIDENT_CREATED = "INCIDENT_CREATED",
+    PLANNING = "PLANNING",
+    CLASSIFICATION = "CLASSIFICATION",
+    ROOT_CAUSE_ANALYSIS = "ROOT_CAUSE_ANALYSIS",
+    VALIDATION = "VALIDATION",
+    REMEDIATION = "REMEDIATION",
+    HUMAN_APPROVAL = "HUMAN_APPROVAL",
+    REPORT_GENERATION = "REPORT_GENERATION",
+    RESOLVED = "RESOLVED",
+    FAILED = "FAILED"
+}
+export declare enum IncidentSeverity {
+    LOW = "LOW",
+    MEDIUM = "MEDIUM",
+    HIGH = "HIGH",
+    CRITICAL = "CRITICAL"
+}
+export declare enum AgentType {
+    PLANNER = "PLANNER",
+    CLASSIFICATION = "CLASSIFICATION",
+    ANALYSIS = "ANALYSIS",
+    VALIDATION = "VALIDATION",
+    REMEDIATION = "REMEDIATION",
+    REPORT_GENERATION = "REPORT_GENERATION"
+}
+export declare enum AgentExecutionStatus {
+    PENDING = "PENDING",
+    RUNNING = "RUNNING",
+    COMPLETED = "COMPLETED",
+    FAILED = "FAILED",
+    RETRYING = "RETRYING"
+}

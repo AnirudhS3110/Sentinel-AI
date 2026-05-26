@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum IncidentStatus {
+  INCIDENT_CREATED
+  PLANNING
+  CLASSIFICATION
+  ROOT_CAUSE_ANALYSIS
+  VALIDATION
+  REMEDIATION
+  HUMAN_APPROVAL
+  REPORT_GENERATION
+  RESOLVED
+  FAILED
+}
+
+enum IncidentSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AgentType {
+  PLANNER
+  CLASSIFICATION
+  ANALYSIS
+  VALIDATION
+  REMEDIATION
+  REPORT_GENERATION
+}
+
+enum AgentExecutionStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+  RETRYING
+}
+
+model User {
+  id                 String              @id @default(cuid())
+  firebaseUid        String              @unique
+  email              String              @unique
+  name               String?
+  avatarUrl          String?
+  role               UserRole            @default(USER)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  incidents          Incident[]
+  workflowExecutions WorkflowExecution[]
+
+  @@index([email])
+  @@index([firebaseUid])
+}
+
+model Incident {
+  id                 String                @id @default(cuid())
+  userId             String
+  user               User                  @relation(fields: [userId], references: [id])
+  title              String
+  description        String?
+  rawLogs            String
+  severity           IncidentSeverity?
+  category           String?
+  status             IncidentStatus        @default(INCIDENT_CREATED)
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+  workflowExecutions WorkflowExecution[]
+  reports            IncidentReport[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model WorkflowExecution {
+  id              String            @id @default(cuid())
+  incidentId      String
+  incident        Incident          @relation(fields: [incidentId], references: [id])
+  initiatedById   String?
+  initiatedBy     User?             @relation(fields: [initiatedById], references: [id])
+  currentStage    IncidentStatus
+  retryCount      Int               @default(0)
+  startedAt       DateTime          @default(now())
+  completedAt     DateTime?
+  agentExecutions AgentExecution[]
+
+  @@index([incidentId])
+  @@index([currentStage])
+}
+
+model AgentExecution {
+  id                  String               @id @default(cuid())
+  workflowExecutionId String
+  workflowExecution   WorkflowExecution    @relation(fields: [workflowExecutionId], references: [id])
+  agentType           AgentType
+  status              AgentExecutionStatus
+  input               Json?
+  output              Json?
+  error               String?
+  durationMs          Int?
+  startedAt           DateTime             @default(now())
+  completedAt         DateTime?
+
+  @@index([workflowExecutionId])
+  @@index([agentType])
+  @@index([status])
+}
+
+model IncidentReport {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id])
+  summary    String
+  rootCause  String
+  remediation String
+  timeline   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([incidentId])
+}

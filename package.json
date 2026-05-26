@@ -1,0 +1,25 @@
+{
+  "name": "sentinel-ai",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@sentinel/shared && npm run build --workspace=api && npm run build --workspace=worker",
+    "dev:api": "npm run start:dev --workspace=api",
+    "dev:worker": "npm run start:dev --workspace=worker",
+    "dev:web": "npm run dev --workspace=web",
+    "db:generate": "npm exec prisma generate --workspace=api",
+    "db:migrate": "npm exec prisma migrate dev --workspace=api",
+    "db:push": "npm exec prisma db push --workspace=api"
+  },
+  "devDependencies": {
+    "tsx": "^4.22.3",
+    "turbo": "^2.9.14",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
+}
