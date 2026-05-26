@@ -1,4 +1,5 @@
 'use client';
+import type {TooltipProps,ValueType,NameType} from 'recharts/types/component/DefaultTooltipContent';
 
 import {
   AreaChart,
@@ -12,7 +13,7 @@ import {
   type TooltipProps,
 } from 'recharts';
 
-const GlassTooltip = ({ active, payload, label }: TooltipProps<number, string>) => {
+const GlassTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
     <div
